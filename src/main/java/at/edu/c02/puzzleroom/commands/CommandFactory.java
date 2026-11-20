@@ -27,7 +27,9 @@ public class CommandFactory {
             case "load" -> new CommandLoad(arguments);
             case "show" -> new CommandShow();
             case "move" -> new CommandMove(arguments);
+            case "fastmove" -> new CommandFastmove(arguments);
             default -> throw new PuzzleRoomCommandNotFoundException();
         };
     }
+
 }
