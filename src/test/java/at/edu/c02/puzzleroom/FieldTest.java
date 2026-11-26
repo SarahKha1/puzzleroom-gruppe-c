@@ -74,6 +74,40 @@ public class FieldTest {
         player.moveRight();
         // Game should be finished after moving right twice
         assertTrue(gameBoard.isFinished());
+    }     @Test
+    public void oneWayFieldAllowedDirection() throws Exception {
+        GameBoard gameBoard = new GameBoardImpl();
+        new CommandLoad(new String[]{"src/test/resources/oneWayField.maze"}).execute(gameBoard);
+        Player player = gameBoard.getPlayer();
+
+        // Move onto the '>' field at row 1, col 2
+        assertTrue(player.moveRight());
+        assertEquals(1, player.getRow());
+        assertEquals(2, player.getCol());
+
+        // Moving right (in arrow direction) should succeed and land on row 1, col 3
+        boolean success = player.moveRight();
+        assertTrue(success);
+        assertEquals(1, player.getRow());
+        assertEquals(3, player.getCol());
+    }
+
+    @Test
+    public void oneWayFieldBlockedDirection() throws Exception {
+        GameBoard gameBoard = new GameBoardImpl();
+        new CommandLoad(new String[]{"src/test/resources/oneWayField.maze"}).execute(gameBoard);
+        Player player = gameBoard.getPlayer();
+
+        // Move onto the '>' field at row 1, col 2
+        assertTrue(player.moveRight());
+        assertEquals(1, player.getRow());
+        assertEquals(2, player.getCol());
+
+        // Moving left (against arrow direction) should return false and keep player at row 1, col 2
+        boolean success = player.moveLeft();
+        assertFalse(success);
+        assertEquals(1, player.getRow());
+        assertEquals(2, player.getCol());
     }
     @Test
     public void iceFieldStopsOnFirstWalkableField() throws Exception {
