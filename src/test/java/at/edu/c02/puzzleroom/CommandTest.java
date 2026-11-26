@@ -1,5 +1,6 @@
 package at.edu.c02.puzzleroom;
 
+import at.edu.c02.puzzleroom.commands.CommandFastmove;
 import at.edu.c02.puzzleroom.commands.CommandLoad;
 import at.edu.c02.puzzleroom.commands.CommandMove;
 import at.edu.c02.puzzleroom.exceptions.PuzzleRoomInvalidArgumentsException;
@@ -7,6 +8,8 @@ import at.edu.c02.puzzleroom.exceptions.PuzzleRoomInvalidMoveException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class CommandTest {
     @Test
@@ -39,5 +42,36 @@ public class CommandTest {
 
         // This should throw a PuzzleRoomInvalidArgumentsException
         new CommandMove(new String[]{"invalid"}).execute(gameBoard);
+    }
+
+    @Test
+    public void fastmoveReachesFinish() throws Exception {
+        GameBoard gameBoard = new GameBoardImpl();
+        new CommandLoad(new String[]{"src/test/resources/fastmove.maze"}).execute(gameBoard);
+        Player player = gameBoard.getPlayer();
+
+        new CommandFastmove(new String[]{"d", "r", "r", "u"}).execute(gameBoard);
+
+        assertTrue(gameBoard.isFinished());
+        assertEquals(4, player.getStepCount());
+        assertEquals(1, player.getRow());
+        assertEquals(3, player.getCol());
+    }
+
+    @Test
+    public void fastmoveBlockedStopsAtLastValidPosition() throws Exception {
+        GameBoard gameBoard = new GameBoardImpl();
+        new CommandLoad(new String[]{"src/test/resources/fastmove.maze"}).execute(gameBoard);
+        Player player = gameBoard.getPlayer();
+
+        try {
+            new CommandFastmove(new String[]{"d", "d", "r"}).execute(gameBoard);
+            fail("Expected PuzzleRoomInvalidMoveException when hitting a wall");
+        } catch (PuzzleRoomInvalidMoveException expected) {
+            // First move 'd' succeeded (row 2, col 1), second move 'd' hit the wall, third move 'r' was skipped
+            assertEquals(1, player.getStepCount());
+            assertEquals(2, player.getRow());
+            assertEquals(1, player.getCol());
+        }
     }
 }

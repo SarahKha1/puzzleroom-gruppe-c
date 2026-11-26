@@ -109,5 +109,30 @@ public class FieldTest {
         assertEquals(1, player.getRow());
         assertEquals(2, player.getCol());
     }
+    @Test
+    public void iceFieldStopsOnFirstWalkableField() throws Exception {
+        GameBoard gameBoard = new GameBoardImpl();
+        new CommandLoad(new String[]{"src/test/resources/iceFieldPath.maze"}).execute(gameBoard);
+        Player player = gameBoard.getPlayer();
+
+        // Moving right onto ice should slide across both '@' fields and stop on the free field at row 1, col 4
+        assertTrue(player.moveRight());
+        assertEquals(1, player.getRow());
+        assertEquals(4, player.getCol());
+        assertFalse(gameBoard.isFinished());
+    }
+
+    @Test
+    public void iceFieldStopsBeforeWall() throws Exception {
+        GameBoard gameBoard = new GameBoardImpl();
+        new CommandLoad(new String[]{"src/test/resources/iceFieldWall.maze"}).execute(gameBoard);
+        Player player = gameBoard.getPlayer();
+
+        // Moving right onto ice should slide across both '@' fields and stop on the second '@' field before the wall at row 1, col 3
+        assertTrue(player.moveRight());
+        assertEquals(1, player.getRow());
+        assertEquals(3, player.getCol());
+        assertFalse(gameBoard.isFinished());
+    }
 
 }
