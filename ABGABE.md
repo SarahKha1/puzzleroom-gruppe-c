@@ -9,11 +9,11 @@ Füllt diese Datei vor dem Release aus. Verwendet hier GitHub-Benutzernamen. Die
 Ergänzt eine Zeile pro Person, in Gruppe G also fünf. Verlinkt jeweils ein selbst erstelltetes Issue und einen selbst eröffneten Pull Request mit einem eigenen Arbeitscommit.
 
 | GitHub-Benutzername | Eigener Beitrag | Eigenes Issue | Eigenes PR |
-| --- | --- | --- | --- |
+|---------| --- | --- | --- |
 | @RamzyYoussef | Implementierung & Unit-Tests für Einbahn (`FieldOneWay`), Eis (`FieldIce`) und `fastmove` (`CommandFastmove`) | https://github.com | https://github.com |
 | @SarahKha1 | Fork-Verwaltung, Review & Abstimmung | (Issue-Link ergänzen) | (PR-Link ergänzen) |
-| @(Mitglied 3) | Review & Prüfung | (Issue-Link ergänzen) | (PR-Link ergänzen) |
-| @(Mitglied 4) | Review & Prüfung | (Issue-Link ergänzen) | (PR-Link ergänzen) |
+| @AdeaB5 | Review & Prüfung | (Issue-Link ergänzen) | (PR-Link ergänzen) |
+| @NataliiaVoroninaCampus02AT       | Review & Prüfung | (Issue-Link ergänzen) | (PR-Link ergänzen) |
 
 ## Aufgaben und Tests
 
