@@ -2,6 +2,13 @@
 
 In Puzzleroom steuert ihr eine Figur durch einen Rätselraum. Das Spiel kann Räume laden und die Figur schrittweise bewegen. Eure Gruppe ergänzt Einbahnfelder, Eis und den Befehl `fastmove`.
 
+## Gruppenmitglieder – Gruppe C
+
+- SarahKha1 (Sarah Khalil)
+- AdeaB5 (Adea Bylygbashi)
+- RamzyYoussef (Ramzy Youssef)
+- NataliiaVoroninaCampus02AT (Nataliia Voronina)
+
 ## Einen Gruppen-Fork anlegen
 
 1. **Eine Person pro Moodle-Gruppe** öffnet [g4e817/puzzleroom-template](https://github.com/g4e817/puzzleroom-template) und klickt auf **Fork**. Wählt das eigene GitHub-Konto und den Branch `main`. Benennt den Fork passend zur Gruppe, z. B. `puzzleroom-gruppe-a`.
